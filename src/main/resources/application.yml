@@ -1,18 +1,11 @@
 
-#spring:
-#  #redis
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    password: redis123
-#    #连接超时时间(毫秒)
-#    timeout: 50000
-#    #Redis默认情况下有16个分片,这里配置具体使用的分片,默认是0
-#    database: 0
-
-swagger:
-  production: false
-  basic:
-    enable: false
-    usrname: username
-    password: 123456
+spring:
+  #redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: redis123
+    #连接超时时间(毫秒)
+    timeout: 50000
+    #Redis默认情况下有16个分片,这里配置具体使用的分片,默认是0
+    database: 0
