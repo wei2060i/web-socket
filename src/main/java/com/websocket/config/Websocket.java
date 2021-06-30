@@ -99,10 +99,10 @@ public class Websocket implements RedisMsg {
     @OnMessage
     public void onMessage(String message, Session session) {
         log.info("来自客户端的消息-->{}", message);
+
     }
 
     /**
-     * @param userId
      * @param message
      * @desc 发送普通消息
      */
