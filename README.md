@@ -6,13 +6,17 @@
 #### webSocket结合redis发布订阅
 
 #### 添加依赖
-
+    <dependency>
      <groupId>com.google.zxing</groupId>
       <artifactId>core</artifactId>
      <version>3.3.3</version>
+    </dependency>
+
+    <dependency>
      <groupId>cn.hutool</groupId>
        <artifactId>hutool-all</artifactId>
      <version>5.7.2</version>
+    </dependency>
 
 qrCode.html是前端页面。
 
