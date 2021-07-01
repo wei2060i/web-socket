@@ -15,3 +15,5 @@
      <version>5.7.2</version>
 
 qrCode.html是前端页面。
+
+为完善,待续....
