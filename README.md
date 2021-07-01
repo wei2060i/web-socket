@@ -14,3 +14,4 @@
        <artifactId>hutool-all</artifactId>
      <version>5.7.2</version>
 
+qrCode.html是前端页面。
