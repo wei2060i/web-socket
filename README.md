@@ -20,4 +20,6 @@
 
 qrCode.html是前端页面。
 
+微信openId:https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_4  
+
 为完善,待续....

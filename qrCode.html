@@ -11,11 +11,11 @@
 		$(document).ready(function(){
 		   initQrImg();
 		});
-		
+
 		var path = "://localhost:8080";
 		var getQrPath =  "http" + path + "/getLoginQr";
 		var wsPath = "ws" + path + "/api/websocket/";
-			   
+
 		function initQrImg(){
             $("#qrImgDiv").empty();
             var xmlhttp;
@@ -32,15 +32,15 @@
 					window.URL.revokeObjectURL(img.src);
 				};
 				img.src = window.URL.createObjectURL(blob);
-				document.getElementById("qrImgDiv").appendChild(img);	
+				document.getElementById("qrImgDiv").appendChild(img);
                 initWebSocket();
             }
-            xmlhttp.send();		   
+            xmlhttp.send();
 		}
 		 function initWebSocket() {
 		     if(typeof(WebSocket) == "undefined") {
                 console.log("您的浏览器不支持WebSocket");
-		     } else { 
+		     } else {
 			   var wsPathStr = wsPath+uuid;
 			   socket = new WebSocket(wsPathStr);
 			   //打开事件
@@ -49,7 +49,7 @@
 				   //socket.send("这是来自客户端的消息" + location.href + new Date());
 			   };
 			   socket.onmessage = function(msg) {
-				   
+
 			   }
 			   //关闭事件
 			  socket.onclose = function() {
@@ -63,4 +63,68 @@
 		    }
 		}
 	</script>
+<head>
+    <meta charset="utf-8">
+    <title>二维码</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<body>
+<div class="qrCodeImg-box" id="qrImgDiv"></div>
+</body>
+<script>
+    $(document).ready(function () {
+        initQrImg();
+    });
+
+    var path = "://localhost:8080";
+    var getQrPath = "http" + path + "/getLoginQr";
+    var wsPath = "ws" + path + "/api/websocket/";
+
+    function initQrImg() {
+        $("#qrImgDiv").empty();
+        var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", getQrPath, true);
+        xmlhttp.responseType = "blob";
+        xmlhttp.onload = function () {
+            console.log(this);
+            uuid = this.getResponseHeader("uuid");
+            var blob = this.response;
+            var img = document.createElement("img");
+            img.className = 'qrCodeBox-img';
+            img.onload = function (e) {
+                window.URL.revokeObjectURL(img.src);
+            };
+            img.src = window.URL.createObjectURL(blob);
+            document.getElementById("qrImgDiv").appendChild(img);
+            initWebSocket();
+        }
+        xmlhttp.send();
+    }
+
+    function initWebSocket() {
+        if (typeof (WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        } else {
+            var wsPathStr = wsPath + uuid;
+            socket = new WebSocket(wsPathStr);
+            //打开事件
+            socket.onopen = function () {
+                console.log("Socket 已打开");
+                //socket.send("这是来自客户端的消息" + location.href + new Date());
+            };
+            socket.onmessage = function (msg) {
+
+            }
+            //关闭事件
+            socket.onclose = function () {
+                console.log("Socket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function () {
+                alert("Socket发生了错误");
+                //此时可以尝试刷新页面
+            }
+        }
+    }
+</script>
 </html>
