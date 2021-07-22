@@ -22,6 +22,9 @@ public class RedisUtils {
     /**
      * 获取jedis对象，并选择redis库。jedis默认是0号库，可传入1-16之间的数选择库存放数据
      * 原则上使用一个redis库存放数据，通过特定的key的命令规则来区分不同的数据就行了。
+     * 使用阻塞的 I/O，且其方法调用都是同步的,程序流需要等到 sockets 处理完 I/O 才能执行,
+     * 不支持异步。
+     * Jedis 客户端实例不是线程安全的，所以需要通过连接池来使用 Jedis。
      *
      * @param index redis库号。使用可变参数的目的就是该参数可传可不传。
      * @return 返回jedis对象
