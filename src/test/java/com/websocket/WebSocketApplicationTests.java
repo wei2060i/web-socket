@@ -1,13 +1,20 @@
 package com.websocket;
 
+import com.websocket.util.RedisUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import redis.clients.jedis.Jedis;
 
 @SpringBootTest
-class WebSocketApplicationTests {
+public class WebSocketApplicationTests {
+    /**
+     * 测试和ServerEndpointExporter冲突
+     * 去掉 @Bean
+     */
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
+        System.out.println(RedisUtils.exists("6"));
     }
 
 }
