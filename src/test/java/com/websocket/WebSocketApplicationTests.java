@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 @SpringBootTest
 public class WebSocketApplicationTests {
     /**
-     * 测试和ServerEndpointExporter冲突
+     * 测试和ServerEndpointExporter冲突.
      * 去掉 @Bean
      */
 
